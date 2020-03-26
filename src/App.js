@@ -1,10 +1,11 @@
 import React from "react";
 import "./styles.css";
+import Nav from "./Components/Nav";
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Your Notes:</h1>
+      <Nav />
     </div>
   );
 }
