@@ -10,20 +10,28 @@ function NewNoteModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">New Note</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        <div class="form-group">
+          <textarea
+            className="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+            placeholder="..."
+          />
+        </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button
+          className="btn btn-success"
+          onClick={() => {
+            props.onHide();
+            props.addNote();
+          }}
+        >
+          Save
+        </Button>
       </Modal.Footer>
     </Modal>
   );
