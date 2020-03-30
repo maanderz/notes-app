@@ -24,14 +24,14 @@ export default function App() {
         </button>
         <MyVerticallyCenteredModal
           show={modalShow}
-          newNote={addNote}
+          newnote={addNote}
           onHide={() => setModalShow(false)}
         />
       </div>
       <ul>
-        {notes.map(note => (
-          <li>{note}</li>
-        ))}
+        {notes.map((note, index) => {
+          return <li key={index}> {note} </li>;
+        })}
       </ul>
     </div>
   );
@@ -68,7 +68,7 @@ function MyVerticallyCenteredModal(props) {
         <Button
           onClick={() => {
             props.onHide();
-            props.newNote(value);
+            props.newnote(value);
           }}
         >
           Close
