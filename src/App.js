@@ -7,9 +7,9 @@ export default function App() {
   const [notes, setNote] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
 
-  function addNote(newValue) {
-    setNote(newValue);
-  }
+  const addNote = function(value) {
+    return setNote(notes => [...notes, value]);
+  };
 
   return (
     <div className="App">
@@ -19,20 +19,27 @@ export default function App() {
           type="button"
           className="btn btn-warning"
           onClick={() => setModalShow(true)}
-          // onClick={props.addNote}
         >
           New Note
         </button>
         <MyVerticallyCenteredModal
           show={modalShow}
+          newNote={addNote}
           onHide={() => setModalShow(false)}
         />
       </div>
+      <ul>
+        {notes.map(note => (
+          <li>{note}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 function MyVerticallyCenteredModal(props) {
+  const [value, setValue] = useState("");
+
   return (
     <Modal
       {...props}
@@ -53,11 +60,19 @@ function MyVerticallyCenteredModal(props) {
             id="exampleFormControlTextarea1"
             rows="3"
             placeholder="..."
+            onChange={e => setValue(e.target.value)}
           />
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button
+          onClick={() => {
+            props.onHide();
+            props.newNote(value);
+          }}
+        >
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

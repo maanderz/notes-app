@@ -26,9 +26,9 @@
 //       <Modal.Footer>
 //         <Button
 //           className="btn btn-success"
-//           onClick={() => {
-//             props.onHide();
-//             props.addNote();
+// onClick={() => {
+//   props.onHide();
+//   props.addNote();
 //             // handleType();
 //           }}
 //         >
