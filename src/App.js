@@ -9,11 +9,14 @@ export default function App() {
     return setNote(notes => [...notes, value]);
   };
 
-  // only display 3 in a row
-  // let three = [];
-  // for (let i = 0; i < notes.length; i++) {
-  //   three.push(<div>{notes[i]}</div>);
-  // }
+  const deleteNote = index => {
+    // setNote(notes.splice(index, 1));
+    console.log("clicked", notes, index);
+    notes.splice(index, 1);
+    setNote(notes => notes);
+    console.log("notes", notes);
+  };
+
   return (
     <div className="App">
       <Nav newNote={addNote} />
@@ -22,7 +25,12 @@ export default function App() {
           return (
             <div className="child" key={index}>
               {" "}
-              <button type="button" class="close" aria-label="Close">
+              <button
+                type="button"
+                className="close"
+                aria-label="Close"
+                onClick={() => deleteNote(index)}
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
               {note}
@@ -30,7 +38,6 @@ export default function App() {
           );
         })}
       </div>
-      {/* <div> {three} </div> */}
     </div>
   );
 }
