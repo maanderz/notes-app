@@ -9,14 +9,28 @@ export default function App() {
     return setNote(notes => [...notes, value]);
   };
 
+  // only display 3 in a row
+  // let three = [];
+  // for (let i = 0; i < notes.length; i++) {
+  //   three.push(<div>{notes[i]}</div>);
+  // }
   return (
     <div className="App">
       <Nav newNote={addNote} />
-      <ul>
+      <div className="parent">
         {notes.map((note, index) => {
-          return <li key={index}> {note} </li>;
+          return (
+            <div className="child" key={index}>
+              {" "}
+              <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              {note}
+            </div>
+          );
         })}
-      </ul>
+      </div>
+      {/* <div> {three} </div> */}
     </div>
   );
 }
