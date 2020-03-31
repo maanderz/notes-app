@@ -19,18 +19,33 @@ function NewNoteModal(props) {
       ) : (
         <Modal.Header closeButton />
       )}
+      {props.notes !== undefined ? (
+        <Modal.Body>
+          <div className="form-group">
+            <textarea
+              className="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              value={props.notes[props.index]}
+              // CAN'T TYPE NEW VALUE RIGHT NOW
+              onChange={e => setValue(e.target.value)}
+            />
+          </div>
+        </Modal.Body>
+      ) : (
+        <Modal.Body>
+          <div className="form-group">
+            <textarea
+              className="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="..."
+              onChange={e => setValue(e.target.value)}
+            />
+          </div>
+        </Modal.Body>
+      )}
 
-      <Modal.Body>
-        <div className="form-group">
-          <textarea
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            placeholder="..."
-            onChange={e => setValue(e.target.value)}
-          />
-        </div>
-      </Modal.Body>
       <Modal.Footer>
         {!props.addNote ? (
           <Button

@@ -56,6 +56,8 @@ export default function App() {
               <NewNote
                 show={modalShow}
                 editNote={editNote}
+                notes={notes}
+                index={noteIndex}
                 onHide={() => setModalShow(false)}
               />
             </div>
