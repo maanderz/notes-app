@@ -13,8 +13,8 @@ export default function App() {
     // setNote(notes.splice(index, 1));
     console.log("clicked", notes, index);
     notes.splice(index, 1);
-    setNote(notes => notes);
     console.log("notes", notes);
+    setNote(notes => [...notes]);
   };
 
   return (
