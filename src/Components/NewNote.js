@@ -4,6 +4,8 @@ import { Button, Modal } from "react-bootstrap";
 function NewNoteModal(props) {
   const [value, setValue] = useState("");
 
+  console.log(props.editNoteIndex);
+
   return (
     <Modal
       {...props}
@@ -11,9 +13,16 @@ function NewNoteModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">New Note</Modal.Title>
-      </Modal.Header>
+      {!props.addNote ? (
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Edit Note
+          </Modal.Title>
+        </Modal.Header>
+      ) : (
+        <Modal.Header closeButton />
+      )}
+
       <Modal.Body>
         <div className="form-group">
           <textarea
@@ -26,15 +35,27 @@ function NewNoteModal(props) {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button
-          className="btn btn-success"
-          onClick={() => {
-            props.onHide();
-            props.addNote(value);
-          }}
-        >
-          Save
-        </Button>
+        {!props.addNote ? (
+          <Button
+            className="btn btn-dark"
+            onClick={() => {
+              props.onHide();
+              props.editNote(value);
+            }}
+          >
+            Edit
+          </Button>
+        ) : (
+          <Button
+            className="btn btn-success"
+            onClick={() => {
+              props.onHide();
+              props.addNote(value);
+            }}
+          >
+            Save
+          </Button>
+        )}
       </Modal.Footer>
     </Modal>
   );

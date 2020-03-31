@@ -16,9 +16,13 @@ export default function App() {
     setNote(notes => [...notes]);
   };
 
-  const editNote = () => {
-    console.log("clicked edit");
+  const editNoteIndex = index => {
+    console.log("clicked edit", index);
     return setModalShow(true);
+  };
+
+  const editNote = () => {
+    console.log("123");
   };
 
   return (
@@ -39,10 +43,10 @@ export default function App() {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div onClick={() => editNote()}> {note} </div>
+              <div onClick={() => editNoteIndex(index)}> {note} </div>
               <NewNote
                 show={modalShow}
-                addNote={addNote}
+                editNote={editNote}
                 onHide={() => setModalShow(false)}
               />
             </div>
