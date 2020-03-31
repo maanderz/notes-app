@@ -3,9 +3,6 @@ import { Button, Modal } from "react-bootstrap";
 
 function NewNoteModal(props) {
   const [value, setValue] = useState("");
-
-  console.log(props.editNoteIndex);
-
   return (
     <Modal
       {...props}

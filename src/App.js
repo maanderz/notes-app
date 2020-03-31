@@ -6,6 +6,7 @@ import NewNote from "./Components/NewNote";
 export default function App() {
   const [notes, setNote] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
+  const [noteIndex, setIndex] = useState(0);
 
   const addNote = function(value) {
     return setNote(notes => [...notes, value]);
@@ -16,13 +17,13 @@ export default function App() {
     setNote(notes => [...notes]);
   };
 
-  const editNoteIndex = index => {
-    console.log("clicked edit", index);
-    return setModalShow(true);
+  const editNote = value => {
+    notes.splice(noteIndex, 1, value);
+    setNote(notes => [...notes]);
   };
 
-  const editNote = () => {
-    console.log("123");
+  const editNoteIndex = index => {
+    setIndex(index);
   };
 
   return (
@@ -43,7 +44,15 @@ export default function App() {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div onClick={() => editNoteIndex(index)}> {note} </div>
+              <div
+                onClick={() => {
+                  setModalShow(true);
+                  editNoteIndex(index);
+                }}
+              >
+                {" "}
+                {note}{" "}
+              </div>
               <NewNote
                 show={modalShow}
                 editNote={editNote}
