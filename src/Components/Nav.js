@@ -17,7 +17,7 @@ function Nav(props) {
       </button>
       <NewNote
         show={modalShow}
-        newNote={props.newNote}
+        addNote={props.addNote}
         onHide={() => setModalShow(false)}
       />
     </div>

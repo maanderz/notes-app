@@ -30,7 +30,7 @@ function NewNoteModal(props) {
           className="btn btn-success"
           onClick={() => {
             props.onHide();
-            props.newNote(value);
+            props.addNote(value);
           }}
         >
           Save
