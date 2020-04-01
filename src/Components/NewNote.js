@@ -26,8 +26,7 @@ function NewNoteModal(props) {
               className="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
-              value={props.notes[props.index]}
-              // CAN'T TYPE NEW VALUE RIGHT NOW
+              defaultValue={props.notes[props.index]}
               onChange={e => setValue(e.target.value)}
             />
           </div>
